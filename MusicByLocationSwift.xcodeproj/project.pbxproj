@@ -14,6 +14,7 @@
 		FDD6867727C9270900864D70 /* MusicByLocationSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD6867627C9270900864D70 /* MusicByLocationSwiftTests.swift */; };
 		FDD6868127C9270900864D70 /* MusicByLocationSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD6868027C9270900864D70 /* MusicByLocationSwiftUITests.swift */; };
 		FDD6868327C9270900864D70 /* MusicByLocationSwiftUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD6868227C9270900864D70 /* MusicByLocationSwiftUITestsLaunchTests.swift */; };
+		FDD6869027C927FC00864D70 /* LocationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD6868F27C927FC00864D70 /* LocationHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		FDD6867C27C9270900864D70 /* MusicByLocationSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicByLocationSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDD6868027C9270900864D70 /* MusicByLocationSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicByLocationSwiftUITests.swift; sourceTree = "<group>"; };
 		FDD6868227C9270900864D70 /* MusicByLocationSwiftUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicByLocationSwiftUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FDD6868F27C927FC00864D70 /* LocationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				FDD6866727C9270600864D70 /* ContentView.swift */,
 				FDD6866927C9270900864D70 /* Assets.xcassets */,
 				FDD6866B27C9270900864D70 /* Preview Content */,
+				FDD6868F27C927FC00864D70 /* LocationHandler.swift */,
 			);
 			path = MusicByLocationSwift;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDD6869027C927FC00864D70 /* LocationHandler.swift in Sources */,
 				FDD6866827C9270600864D70 /* ContentView.swift in Sources */,
 				FDD6866627C9270600864D70 /* MusicByLocationSwiftApp.swift in Sources */,
 			);
@@ -421,6 +425,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MusicByLocationSwift/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location to find music.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -449,6 +454,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MusicByLocationSwift/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location to find music.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
