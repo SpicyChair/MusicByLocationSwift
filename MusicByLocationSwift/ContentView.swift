@@ -12,14 +12,23 @@ struct ContentView: View {
     @StateObject private var locationHandler = LocationHandler()
     
     var body: some View {
-        VStack {
-            Text(locationHandler.lastKnownLocation)
-            Spacer()
-            Button("Find Music") {
-                locationHandler.requestAuthorisation()
-                locationHandler.requestLocation()
+        
+        Form {
+            Section {
+                Text("\(locationHandler.locality), \(locationHandler.country)")
+                    .bold()
+                Text("\(locationHandler.latitude), \(locationHandler.longitude)")
+                Text("Timezone: \(locationHandler.timezone)")
+            }
+            Section {
+                Button("Find Music") {
+                    locationHandler.requestLocation()
+                }
             }
         }
+        .onAppear(perform: {
+            locationHandler.requestAuthorisation()
+        })
     }
 }
 
