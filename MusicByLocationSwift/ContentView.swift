@@ -9,25 +9,36 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @StateObject private var locationHandler = LocationHandler()
+    @StateObject private var state = StateController()
     
     var body: some View {
         
         Form {
             Section {
-                Text("\(locationHandler.locality), \(locationHandler.country)")
+                Text("\(state.locality), \(state.country)")
                     .bold()
-                Text("\(locationHandler.latitude), \(locationHandler.longitude)")
-                Text("Timezone: \(locationHandler.timezone)")
+                Text("\(state.latitude), \(state.longitude)")
+                Text("Timezone: \(state.timezone)")
+                 
+            }
+            Section {
+                Text(state.artistNames.joined(separator: ", "))
+                List {
+                    ForEach (0..<state.artistNames.count) {index in
+                        Text(state.artistNames[index])
+                    }
+                }
             }
             Section {
                 Button("Find Music") {
-                    locationHandler.requestLocation()
+                    state.findMusic()
+                    state.getArtists()
+                    
                 }
             }
         }
         .onAppear(perform: {
-            locationHandler.requestAuthorisation()
+            state.requestAccessToLocationData()
         })
     }
 }
