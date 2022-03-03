@@ -9,18 +9,22 @@ import Foundation
 
 class StateController: ObservableObject {
     
-    @Published var lastKnownLocation:String = ""
-    @Published var locality:String = "Null Island"
-    @Published var country:String = "Nowhere"
+    
+    @Published var locality:String = ""  {
+        didSet {
+            adapter.getArtists(searchFor: country, completion: updateArtistsByLocation)
+        }
+    }
+    @Published var country:String = ""
     @Published var latitude:Double = 0
     @Published var longitude:Double = 0
     @Published var timezone: String = "UTC+0"
-    
-    @Published var artistNames:[String] = []
+    @Published var artists:[Artist] = []
     
     private let locationHandler:LocationHandler = LocationHandler()
+    private let adapter = iTunesAdapter()
     
-    func findMusic() {
+    func getUserLocation() {
         locationHandler.requestLocation()
     }
     
@@ -29,63 +33,15 @@ class StateController: ObservableObject {
         locationHandler.requestAuthorisation()
     }
     
-    func getArtists(searchFor: String) {
-        
-        let urlString = "https://itunes.apple.com/search?term=\(searchFor)&entity=musicArtist".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        
-        guard let url = URL(string: urlString)
-        else {
-            print("Invalid URL")
-            return
+    private func updateArtistsByLocation(artists: [Artist]?) {
+        let artists = artists?.map {
+            return $0
         }
-        
-        let request = URLRequest(url: url)
-        
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let data = data {
-                if let response = self.parseJson(json: data) {
-                    let names = response.results.map{
-                        return $0.name
-                    }
-                    DispatchQueue.main.async{
-                        self.artistNames = names
-                    }
-                            
-                }
-            }
-        }.resume()
-            
+        DispatchQueue.main.async{
+            self.artists = artists ?? []
+        }
     }
+    
             
-    func parseJson(json: Data) -> ArtistResponse? {
-        let decoder = JSONDecoder()
-        
-        do {
-            let artistResponse = try decoder.decode(ArtistResponse.self, from: json)
-            return artistResponse
-        } catch let DecodingError.dataCorrupted(context) {
-            print(context)
-        } catch let DecodingError.keyNotFound(key, context) {
-            print("Key '\(key)' not found:", context.debugDescription)
-            print("codingPath:", context.codingPath)
-        } catch let DecodingError.valueNotFound(value, context) {
-            print("Value '\(value)' not found:", context.debugDescription)
-            print("codingPath:", context.codingPath)
-        } catch let DecodingError.typeMismatch(type, context)  {
-            print("Type '\(type)' mismatch:", context.debugDescription)
-            print("codingPath:", context.codingPath)
-        } catch {
-            print("error: ", error)
-        }
-        return nil
-        /*
-        if let artistResponse = try? decoder.decode(ArtistResponse.self, from: json) {
-            return artistResponse
-        } else {
-            print("Error decoding JSON")
-            return nil
-        }
-         */
-    }
     
 }

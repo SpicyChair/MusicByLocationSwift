@@ -18,6 +18,7 @@
 		FDD6868127C9270900864D70 /* MusicByLocationSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD6868027C9270900864D70 /* MusicByLocationSwiftUITests.swift */; };
 		FDD6868327C9270900864D70 /* MusicByLocationSwiftUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD6868227C9270900864D70 /* MusicByLocationSwiftUITestsLaunchTests.swift */; };
 		FDD6869027C927FC00864D70 /* LocationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDD6868F27C927FC00864D70 /* LocationHandler.swift */; };
+		FDE2F98127D1763A00425FF6 /* iTunesAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDE2F98027D1763A00425FF6 /* iTunesAdapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		FDD6868027C9270900864D70 /* MusicByLocationSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicByLocationSwiftUITests.swift; sourceTree = "<group>"; };
 		FDD6868227C9270900864D70 /* MusicByLocationSwiftUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicByLocationSwiftUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FDD6868F27C927FC00864D70 /* LocationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHandler.swift; sourceTree = "<group>"; };
+		FDE2F98027D1763A00425FF6 /* iTunesAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,14 +104,15 @@
 		FDD6866427C9270600864D70 /* MusicByLocationSwift */ = {
 			isa = PBXGroup;
 			children = (
+				FDE2F97F27D1433100425FF6 /* Extensions */,
+				FDE2F97E27D142FE00425FF6 /* Model */,
 				FDD6866527C9270600864D70 /* MusicByLocationSwiftApp.swift */,
 				FDD6866727C9270600864D70 /* ContentView.swift */,
 				FDD6866927C9270900864D70 /* Assets.xcassets */,
 				FDD6866B27C9270900864D70 /* Preview Content */,
 				FDD6868F27C927FC00864D70 /* LocationHandler.swift */,
 				FD1EFDE027D0115A00950C71 /* StateController.swift */,
-				FD1EFDE227D0161200950C71 /* ArtistResponse.swift */,
-				FD1EFDE427D0163300950C71 /* Artist.swift */,
+				FDE2F98027D1763A00425FF6 /* iTunesAdapter.swift */,
 			);
 			path = MusicByLocationSwift;
 			sourceTree = "<group>";
@@ -137,6 +140,22 @@
 				FDD6868227C9270900864D70 /* MusicByLocationSwiftUITestsLaunchTests.swift */,
 			);
 			path = MusicByLocationSwiftUITests;
+			sourceTree = "<group>";
+		};
+		FDE2F97E27D142FE00425FF6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FD1EFDE427D0163300950C71 /* Artist.swift */,
+				FD1EFDE227D0161200950C71 /* ArtistResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FDE2F97F27D1433100425FF6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +291,7 @@
 				FD1EFDE527D0163300950C71 /* Artist.swift in Sources */,
 				FDD6869027C927FC00864D70 /* LocationHandler.swift in Sources */,
 				FD1EFDE327D0161200950C71 /* ArtistResponse.swift in Sources */,
+				FDE2F98127D1763A00425FF6 /* iTunesAdapter.swift in Sources */,
 				FD1EFDE127D0115A00950C71 /* StateController.swift in Sources */,
 				FDD6866827C9270600864D70 /* ContentView.swift in Sources */,
 				FDD6866627C9270600864D70 /* MusicByLocationSwiftApp.swift in Sources */,

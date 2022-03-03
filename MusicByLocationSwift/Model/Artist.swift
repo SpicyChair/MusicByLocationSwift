@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Artist:Codable {
+struct Artist:Codable, Hashable {
     var name:String
     var link:String
     var genre:String
