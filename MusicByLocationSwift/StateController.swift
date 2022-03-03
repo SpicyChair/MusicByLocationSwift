@@ -29,8 +29,11 @@ class StateController: ObservableObject {
         locationHandler.requestAuthorisation()
     }
     
-    func getArtists() {
-        guard let url = URL(string: "https://itunes.apple.com/search?term=Clean%20Bandit&entity=musicArtist")
+    func getArtists(searchFor: String) {
+        
+        let urlString = "https://itunes.apple.com/search?term=\(searchFor)&entity=musicArtist".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        
+        guard let url = URL(string: urlString)
         else {
             print("Invalid URL")
             return
@@ -56,12 +59,33 @@ class StateController: ObservableObject {
             
     func parseJson(json: Data) -> ArtistResponse? {
         let decoder = JSONDecoder()
+        
+        do {
+            let artistResponse = try decoder.decode(ArtistResponse.self, from: json)
+            return artistResponse
+        } catch let DecodingError.dataCorrupted(context) {
+            print(context)
+        } catch let DecodingError.keyNotFound(key, context) {
+            print("Key '\(key)' not found:", context.debugDescription)
+            print("codingPath:", context.codingPath)
+        } catch let DecodingError.valueNotFound(value, context) {
+            print("Value '\(value)' not found:", context.debugDescription)
+            print("codingPath:", context.codingPath)
+        } catch let DecodingError.typeMismatch(type, context)  {
+            print("Type '\(type)' mismatch:", context.debugDescription)
+            print("codingPath:", context.codingPath)
+        } catch {
+            print("error: ", error)
+        }
+        return nil
+        /*
         if let artistResponse = try? decoder.decode(ArtistResponse.self, from: json) {
             return artistResponse
         } else {
             print("Error decoding JSON")
             return nil
         }
+         */
     }
     
 }

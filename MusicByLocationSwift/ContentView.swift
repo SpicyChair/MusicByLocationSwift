@@ -22,23 +22,19 @@ struct ContentView: View {
                  
             }
             Section {
-                Text(state.artistNames.joined(separator: ", "))
-                List {
-                    ForEach (0..<state.artistNames.count) {index in
-                        Text(state.artistNames[index])
-                    }
-                }
+                Text(state.artistNames.isEmpty ? "Tap below to find music!" : state.artistNames[0...10].joined(separator: ", "))
             }
             Section {
                 Button("Find Music") {
-                    state.findMusic()
-                    state.getArtists()
-                    
+                    state.getArtists(searchFor: state.country)
                 }
             }
         }
         .onAppear(perform: {
+            
             state.requestAccessToLocationData()
+            state.findMusic()
+            
         })
     }
 }

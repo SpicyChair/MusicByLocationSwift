@@ -9,11 +9,11 @@ import Foundation
 
 
 struct ArtistResponse : Codable {
-    var count:Int
+    var resultCount:Int
     var results: [Artist]
     
-    private enum codingKeys:String, CodingKey {
-        case count = "resultCount"
+    private enum CodingKeys:String, CodingKey {
+        case resultCount = "resultCount"
         case results = "results"
     }
 }
